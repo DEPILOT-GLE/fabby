@@ -1,0 +1,571 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Happy Women's Day - Fabiela ✨</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&family=Poppins:wght@300;400;600&family=Great+Vibes&display=swap');
+
+        :root {
+            --primary-accent: #fbc2eb;
+            --heart-pink: #ff477e;
+            --soft-white: #f8faff;
+            --gradient-bg: linear-gradient(135deg, #0d1b2a 0%, #1b263b 50%, #415a77 100%);
+            --container-bg: rgba(27, 38, 59, 0.75);
+            --text-color: #e0e1dd;
+        }
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            background: var(--gradient-bg);
+            background-attachment: fixed;
+            color: var(--text-color);
+            margin: 0;
+            padding: 0;
+            scroll-behavior: smooth;
+            min-height: 100vh;
+            overflow-x: hidden;
+        }
+
+        /* Cute Opening Animations */
+        .stars {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100vw;
+            height: 100vh;
+            pointer-events: none;
+            z-index: 9999;
+        }
+
+        .star {
+            position: absolute;
+            background-color: var(--primary-accent);
+            width: 4px;
+            height: 4px;
+            border-radius: 50%;
+            opacity: 0;
+            animation: twinkle 4s infinite, descend 8s linear infinite;
+        }
+
+        @keyframes twinkle {
+
+            0%,
+            100% {
+                opacity: 0;
+                transform: scale(0.5);
+            }
+
+            50% {
+                opacity: 1;
+                transform: scale(1.5);
+                box-shadow: 0 0 10px var(--primary-accent);
+            }
+        }
+
+        @keyframes descend {
+            from {
+                top: -10px;
+            }
+
+            to {
+                top: 100vh;
+            }
+        }
+
+        .container {
+            width: 90%;
+            max-width: 1000px;
+            margin: 50px auto;
+            padding: 50px;
+            border-radius: 20px;
+            background: var(--container-bg);
+            backdrop-filter: blur(15px);
+            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.5);
+            text-align: center;
+            border: 1px solid rgba(119, 141, 169, 0.3);
+            animation: slideUpFade 1.5s cubic-bezier(0.23, 1, 0.32, 1) forwards;
+            opacity: 0;
+            transform: translateY(50px);
+        }
+
+        @keyframes slideUpFade {
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        h1 {
+            font-family: 'Playfair Display', serif;
+            color: var(--primary-accent);
+            font-size: 42px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 12px;
+            margin-bottom: 40px;
+            flex-wrap: wrap;
+            text-shadow: 0 2px 5px rgba(0, 0, 0, 0.5);
+        }
+
+        .heart {
+            font-size: 38px;
+            color: var(--heart-pink);
+            animation: pulse 1.5s infinite, float 3s ease-in-out infinite;
+        }
+
+        @keyframes pulse {
+            0% {
+                transform: scale(1);
+                opacity: 0.8;
+            }
+
+            50% {
+                transform: scale(1.3);
+                opacity: 1;
+            }
+
+            100% {
+                transform: scale(1);
+                opacity: 0.8;
+            }
+        }
+
+        @keyframes float {
+
+            0%,
+            100% {
+                transform: translateY(0);
+            }
+
+            50% {
+                transform: translateY(-10px);
+            }
+        }
+
+        h2 {
+            font-family: 'Playfair Display', serif;
+            color: var(--primary-accent);
+            font-size: 32px;
+            margin-bottom: 30px;
+            position: relative;
+            display: inline-block;
+            text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+        }
+
+        h2::after {
+            content: '';
+            position: absolute;
+            bottom: -8px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 60%;
+            height: 3px;
+            background: linear-gradient(90deg, transparent, var(--heart-pink), transparent);
+            border-radius: 2px;
+        }
+
+        .phase-content {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 40px;
+            margin-top: 30px;
+            text-align: left;
+        }
+
+        .phase-content.reverse {
+            flex-direction: row-reverse;
+        }
+
+        .phase-text {
+            flex: 1;
+        }
+
+        .phase-image-container {
+            flex: 1;
+            max-width: 45%;
+        }
+
+        p {
+            font-size: 19px;
+            line-height: 1.8;
+            margin: 20px 0;
+            opacity: 0;
+            transform: translateY(25px);
+            transition: all 1.2s cubic-bezier(0.23, 1, 0.32, 1);
+            color: var(--soft-white);
+        }
+
+        p.show {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .phase-image {
+            width: 100%;
+            border-radius: 15px;
+            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.5);
+            opacity: 0;
+            transform: scale(0.9) rotate(-3deg);
+            transition: all 1.5s cubic-bezier(0.23, 1, 0.32, 1);
+            object-fit: cover;
+            border: 3px solid rgba(251, 194, 235, 0.2);
+        }
+
+        .phase-image.show {
+            opacity: 1;
+            transform: scale(1) rotate(0deg);
+        }
+
+        .phase-image:hover {
+            transform: scale(1.03) rotate(2deg);
+            box-shadow: 0 20px 40px rgba(251, 194, 235, 0.3);
+            border-color: rgba(251, 194, 235, 0.6);
+        }
+
+        button {
+            padding: 16px 40px;
+            font-size: 20px;
+            font-family: 'Poppins', sans-serif;
+            font-weight: 600;
+            background: linear-gradient(135deg, #ff758c, #ff7eb3);
+            color: #fff;
+            border: none;
+            border-radius: 50px;
+            cursor: pointer;
+            margin-top: 40px;
+            margin-bottom: 20px;
+            transition: all 0.4s ease;
+            box-shadow: 0 10px 25px rgba(255, 117, 140, 0.4);
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            display: inline-block;
+            outline: none;
+            position: relative;
+            overflow: hidden;
+        }
+
+        button::after {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: rgba(255, 255, 255, 0.2);
+            transform: rotate(45deg);
+            transition: all 0.5s ease;
+            opacity: 0;
+        }
+
+        button:hover {
+            transform: translateY(-5px) scale(1.02);
+            box-shadow: 0 15px 35px rgba(255, 117, 140, 0.6);
+        }
+
+        button:hover::after {
+            left: 100%;
+            opacity: 1;
+            transition: all 0.5s ease;
+        }
+
+        button:active {
+            transform: translateY(2px);
+        }
+
+        .next-btn {
+            opacity: 0;
+            transition: opacity 1.5s ease-in, transform 0.4s ease, box-shadow 0.4s ease;
+        }
+
+        .next-btn.show {
+            opacity: 1;
+        }
+
+        .phase {
+            display: none;
+            margin-top: 60px;
+            text-align: center;
+            border: 1px solid rgba(119, 141, 169, 0.3);
+            border-radius: 20px;
+            padding: 40px;
+            background: var(--container-bg);
+            backdrop-filter: blur(10px);
+            box-shadow: 0 12px 40px rgba(0, 0, 0, 0.4);
+        }
+
+        .phase.show {
+            display: block;
+            animation: zoomFadeIn 1.2s cubic-bezier(0.175, 0.885, 0.32, 1.275) forwards;
+        }
+
+        @keyframes zoomFadeIn {
+            from {
+                opacity: 0;
+                transform: scale(0.9) translateY(40px);
+            }
+
+            to {
+                opacity: 1;
+                transform: scale(1) translateY(0);
+            }
+        }
+
+        .divider {
+            height: 2px;
+            background: linear-gradient(90deg, transparent, rgba(251, 194, 235, 0.6), transparent);
+            border-radius: 2px;
+            margin: 50px auto;
+            width: 80%;
+            opacity: 0;
+            transition: opacity 2s ease-in;
+        }
+
+        .divider.show {
+            opacity: 1;
+        }
+
+        .signature {
+            margin-top: 60px;
+            font-family: 'Great Vibes', cursive;
+            font-size: 42px;
+            color: var(--primary-accent);
+            text-align: center;
+            opacity: 0;
+            transition: opacity 2.5s ease-in;
+            line-height: 1.4;
+            text-shadow: 0 2px 4px rgba(0, 0, 0, 0.5);
+        }
+
+        .signature.show {
+            opacity: 1;
+        }
+
+        @media (max-width: 768px) {
+
+            .phase-content,
+            .phase-content.reverse {
+                flex-direction: column;
+                text-align: center;
+                gap: 20px;
+            }
+
+            .phase-image-container {
+                max-width: 90%;
+            }
+
+            p {
+                text-align: center;
+            }
+        }
+    </style>
+    <script>
+        // Cute Star Animation Setup
+        function createStars() {
+            const starsContainer = document.querySelector('.stars');
+            for (let i = 0; i < 30; i++) {
+                const star = document.createElement('div');
+                star.classList.add('star');
+                star.style.left = `${Math.random() * 100}vw`;
+                star.style.animationDelay = `${Math.random() * 5}s`;
+                starsContainer.appendChild(star);
+            }
+        }
+
+        function showPhase(id) {
+            const phase = document.getElementById(id);
+            phase.classList.add('show');
+
+            const img = phase.querySelector('.phase-image');
+            if (img) {
+                setTimeout(() => img.classList.add('show'), 300);
+            }
+
+            const paragraphs = phase.querySelectorAll('p');
+            paragraphs.forEach((p, i) => {
+                setTimeout(() => p.classList.add('show'), 700 + (i * 600)); // Slightly faster cascades
+            });
+
+            const divider = phase.querySelector('.divider');
+            if (divider) {
+                setTimeout(() => divider.classList.add('show'), (paragraphs.length + 1) * 600);
+            }
+
+            const nextBtn = phase.querySelector('.next-btn');
+            if (nextBtn) {
+                setTimeout(() => {
+                    nextBtn.style.display = 'inline-block';
+                    setTimeout(() => nextBtn.classList.add('show'), 100);
+                }, (paragraphs.length + 1) * 600 + 300);
+            }
+
+            const signature = phase.querySelector('.signature');
+            if (signature) {
+                setTimeout(() => signature.classList.add('show'), (paragraphs.length + 1) * 600 + 800);
+            }
+
+            setTimeout(() => {
+                phase.scrollIntoView({ behavior: 'smooth', block: 'start' });
+            }, 500);
+        }
+
+        window.onload = () => {
+            createStars();
+            const paragraphs = document.querySelectorAll('.intro p');
+            paragraphs.forEach((p, i) => {
+                setTimeout(() => p.classList.add('show'), 800 + (i * 600));
+            });
+            const heroImg = document.querySelector('.hero-img');
+            if (heroImg) setTimeout(() => heroImg.classList.add('show'), 600);
+        };
+    </script>
+</head>
+
+<body>
+    <div class="stars"></div>
+    <div class="container">
+        <h1>HAPPY WOMEN'S DAY FABIELA <span class="heart">🌸</span></h1>
+
+        <div class="intro phase-content">
+            <div class="phase-image-container">
+                <img src="fabiela-1.jpg" alt="Fabiela" class="phase-image hero-img"
+                    onerror="this.onerror=null; this.src='https://via.placeholder.com/400x500/1b263b/fbc2eb?text=Save+1st+Picture+as+fabiela-1.jpg';">
+            </div>
+            <div class="phase-text">
+                <p>✨🥺🫂 This is my soul speaking — thank you for being the most incredible best friend I could ever ask
+                    for. Happy Women's Day to a truly strong, brilliant, and beautiful woman!</p>
+                <p>We may not be lovers, but the love I have for you is pure, deep, and unconditional. I lowkey admire
+                    and cherish you more than words can ever completely say. You are my chosen family. 🥰</p>
+                <p>You inspire me every day with your phenomenal resilience and grace. You remind me what it means to be
+                    unapologetically strong and to keep moving forward no matter what life throws our way. 💖🦋</p>
+            </div>
+        </div>
+
+        <div class="divider show"></div>
+
+        <!-- Intro Next Button -->
+        <button onclick="this.style.display='none'; showPhase('phase2')">💖 See My Heart 💖</button>
+
+        <!-- Phase 2 -->
+        <div id="phase2" class="phase">
+            <h2>Phase 2: Our Safe Space</h2>
+            <div class="phase-content reverse">
+                <div class="phase-image-container">
+                    <img src="fabiela-2.jpg" alt="Fabiela Looking Back" class="phase-image"
+                        onerror="this.onerror=null; this.src='https://via.placeholder.com/400x500/1b263b/fbc2eb?text=Save+2nd+Picture+as+fabiela-2.jpg';">
+                </div>
+                <div class="phase-text">
+                    <p>🫂🌸 In your presence, I find pure joy and total peace. You stand with me in silence when I
+                        question myself, and you cheer the loudest when I rise. You are my safe space and the anchor
+                        that steadies my storms. 🥹</p>
+                    <p>Every single memory we make is proof to me of just how immensely blessed I am to have you. You
+                        embody raw strength, sheer elegance, and an absolutely unbreakable spirit. To see you shine is
+                        one of my greatest joys in life. ❤️</p>
+                </div>
+            </div>
+
+            <div class="divider"></div>
+            <button class="next-btn" style="display:none;" onclick="this.style.display='none'; showPhase('phase3')">💞
+                Enter the Emotional Core 💞</button>
+        </div>
+
+        <!-- Phase 3 -->
+        <div id="phase3" class="phase">
+            <h2>Phase 3: The Emotional Core</h2>
+            <div class="phase-content">
+                <div class="phase-image-container">
+                    <img src="fabiela-3.jpg" alt="Fabiela Beautiful" class="phase-image"
+                        onerror="this.onerror=null; this.src='https://via.placeholder.com/400x500/1b263b/fbc2eb?text=Save+3rd+Picture+as+fabiela-3.jpg';">
+                </div>
+                <div class="phase-text">
+                    <p>🥺💖 My dearest Fabiela, you are a remarkably rare gem. You continuously remind me that being
+                        “enough” is not about achieving perfection, but about the beautiful kindness you persistently
+                        show the world and the radiant fire inside your beautiful soul. 🥰</p>
+                    <p>Every doubt I ever carry inherently becomes lighter simply because I have an unwavering best
+                        friend like you walking right beside me. You are my solid compass whenever things get
+                        complicated or exhausting. 🦋</p>
+                    <p>And so I say thank you — for being the absolute strongest woman I know, for standing with me, and
+                        for simply being YOU. I cherish every single moment we share. 🌸✨</p>
+                </div>
+            </div>
+
+            <div class="divider"></div>
+            <button class="next-btn" style="display:none;" onclick="this.style.display='none'; showPhase('phase4')">🌸
+                See Her True Worth 🌸</button>
+        </div>
+
+        <!-- Phase 4 -->
+        <div id="phase4" class="phase">
+            <h2>Phase 4: Her True Worth</h2>
+            <div class="phase-content reverse">
+                <div class="phase-image-container">
+                    <img src="fabiela-4.jpg" alt="Fabiela Core" class="phase-image"
+                        onerror="this.onerror=null; this.src='https://via.placeholder.com/400x500/1b263b/fbc2eb?text=Save+4th+Picture+as+fabiela-4.jpg';">
+                </div>
+                <div class="phase-text">
+                    <p>✨🦋 Fabiela, you are infinitely more than enough. Your value is completely uniquely yours —
+                        deeply rooted in your outstanding kindness, your sharp brilliance, and your fierce independence.
+                        🤗</p>
+                    <p>You are a fiercely strong woman, completely capable of successfully achieving anything you ever
+                        set your beautiful mind to. Your worth is eternal, and your spirit is just radiantly gorgeous.
+                        Please never let anyone or anything dim your gorgeous light. 💖</p>
+                    <p>Let me gently remind you today: emphatically no matter how tough the path ever gets, I will
+                        definitively always be right here to support and defend you. You are brilliant, you are
+                        breathtakingly beautiful, and you are so deeply cherished. Happy Women's Day once again! 🌸</p>
+                </div>
+            </div>
+
+            <div class="divider"></div>
+            <button class="next-btn" style="display:none;" onclick="this.style.display='none'; showPhase('phase5')">💌
+                Words of Wisdom 💌</button>
+        </div>
+
+        <!-- Phase 5 : Affliation & Lifes -->
+        <div id="phase5" class="phase">
+            <h2>Phase 5: Navigating Our Journey</h2>
+            <div class="phase-content">
+                <div class="phase-text" style="text-align: center;">
+                    <p>🌱 Life will undeniably sometimes fiercely test us. There will undoubtedly be tough days when the
+                        winds are extremely harsh, but I strongly want you to always deeply remember: it is genuinely
+                        never you against the world — I've eternally got your steadfast back. 🤝</p>
+                    <p>Our outstanding friendship is strongly built on solid trust, endless laughter, and mutual,
+                        unwavering respect. Let us gracefully always nurture this powerful bond, beautifully answering
+                        every single rising challenge with deep patience and genuine, best-friend love. 🌸</p>
+                    <p>You are spectacularly building a phenomenal, gorgeous life, and I am sincerely just so incredibly
+                        proud and lucky to be an active witness to your incredible greatness. Keep soaring incredibly
+                        high, my absolute best friend! 🦋</p>
+                </div>
+            </div>
+
+            <div class="divider"></div>
+            <button class="next-btn" style="display:none;" onclick="this.style.display='none'; showPhase('phase6')">🌷 A
+                Bestie's Promise 🌷</button>
+        </div>
+
+        <!-- Phase 6 : Final Dedication -->
+        <div id="phase6" class="phase">
+            <h2>Phase 6: Best Friends Forever</h2>
+            <div class="phase-content">
+                <div class="phase-text" style="text-align: center;">
+                    <p>🥺 Fabiela, I am fully here for you. Distinctly not just for the beautiful sunshines and the
+                        massive victories, but also steadfastly for the messy, complicated, and deeply challenging days
+                        too. At literally every single milestone you hit, I will definitely be the absolute loudest one
+                        cheering you on.</p>
+                    <p>Thank you for choosing to be my irreplaceable best friend. You are a truly wonderful blessing, a
+                        massive daily inspiration, and a truly awe-inspiring, strong woman. Let's fearlessly conquer the
+                        whole world together! 💖🌍</p>
+                </div>
+            </div>
+
+            <div class="divider"></div>
+            <div class="signature">Written with Endless Admiration & Cherish by<br>Your Bestie</div>
+        </div>
+    </div>
+</body>
+
+</html>
+
